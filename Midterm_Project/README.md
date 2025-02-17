@@ -4,3 +4,4 @@
 - dirty bit: output不變時直接避開access SRAM
 - ================================================================
 - 首次嘗試複數FSM寫法(Main, Focus_Sram, Expose_Sram, DRAM)，在控制上好寫非常多。
+- 最後沒有比register開爆的寫法好，但還是一個好設計
