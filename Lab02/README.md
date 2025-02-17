@@ -6,3 +6,4 @@
 ## tips 
 - sequential blocks for current state registers
 - combination blocks for next state logics
+- txt files are for debugging
