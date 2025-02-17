@@ -48,7 +48,7 @@ reg [8:0] out_change_reg;
 // wire for port connection and cont. assignment
 // reg for proc. assignment
 
-//card validation
+// card validation
 wire    [3:0]   snum1, snum3, snum5, snum7, snum9, snum11, snum13, snum15;
 wire    [3:0]   num1, num3, num5, num7, num9, num11, num13, num15;
 wire    [4:0]   sum_l1_0, sum_l1_1, sum_l1_2, sum_l1_3, sum_l1_4, sum_l1_5, sum_l1_6, sum_l1_7;
@@ -56,7 +56,7 @@ wire    [5:0]   sum_l2_0, sum_l2_1, sum_l2_2, sum_l2_3;
 wire    [6:0]   sum_l3_0, sum_l3_1;
 wire    [7:0]   sum;
 
-//sorting
+// sorting
 wire    [7:0]   total7, total6, total5, total4, total3, total2, total1, total0;
 wire    [7:0]   a7, a6, a5, a4, a3, a2, a1, a0;
 wire    [7:0]   b7, b6, b5, b4, b3, b2, b1, b0;
@@ -69,7 +69,7 @@ wire    [7:0]   d2, e1, s1 ,s2;
 //================================================================
 //    DESIGN
 //================================================================
-//card validation
+// card validation
 assign snum15 = {card_num[62:60],1'b0};
 assign snum13 = {card_num[54:52],1'b0};
 assign snum11 = {card_num[46:44],1'b0};
@@ -105,7 +105,8 @@ assign sum_l3_0 = sum_l2_0 + sum_l2_1;
 assign sum_l3_1 = sum_l2_2 + sum_l2_3;
 
 assign sum = sum_l3_0 + sum_l3_1;
-//sorting network (19 cmps)
+
+// sorting network (19 cmps)
 MUL mul1(.in2(snack_num[31:28]), .in1(price[31:28]), .out(total7));
 MUL mul2(.in1(snack_num[27:24]), .in2(price[27:24]), .out(total6));
 MUL mul3(.in1(snack_num[23:20]), .in2(price[23:20]), .out(total5));
@@ -190,21 +191,23 @@ assign out_change = out_change_reg;
 
 endmodule
 
+
 module CMPB (in1, in2, big, sml);
-input [7:0] in1;
-input [7:0] in2;
-output[7:0] big;
-output[7:0] sml;
-assign big = (in1 > in2) ? in1 : in2;
-assign sml = (in1 > in2) ? in2 : in1;
+    input [7:0] in1;
+    input [7:0] in2;
+    output[7:0] big;
+    output[7:0] sml;
+    assign big = (in1 > in2) ? in1 : in2;
+    assign sml = (in1 > in2) ? in2 : in1;
 endmodule
+
 module CMPS (in1, in2, big, sml);
-input [7:0] in1;
-input [7:0] in2;
-output[7:0] big;
-output[7:0] sml;
-assign big = (in1 < in2) ? in2 : in1;
-assign sml = (in1 < in2) ? in1 : in2;
+    input [7:0] in1;
+    input [7:0] in2;
+    output[7:0] big;
+    output[7:0] sml;
+    assign big = (in1 < in2) ? in2 : in1;
+    assign sml = (in1 < in2) ? in1 : in2;
 endmodule
 
 module MUL(in1, in2, out);
