@@ -78,7 +78,7 @@ always @(posedge wclk or negedge rst_n) begin
         wptr_bin <= ns_wptr_bin;
     end
 end
-always @(posedge wclk) begin
+always @(posedge wclk or negedge rst_n) begin
     if(!rst_n)begin
         wfull <= 1'b0;
     end else begin
